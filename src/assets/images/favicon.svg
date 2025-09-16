@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1080 1080">
+  <!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#radial-gradient);
+      }
+
+      .st1 {
+        fill: #007fb0;
+      }
+
+      .st2 {
+        fill: #009fe3;
+      }
+    </style>
+    <radialGradient id="radial-gradient" cx="37.5" cy="1053.7" fx="37.5" fy="1053.7" r="14.9" gradientTransform="translate(11.3 17812.5) scale(16.5 -16.5)" gradientUnits="userSpaceOnUse">
+      <stop offset=".3" stop-color="#fff" stop-opacity=".6"/>
+      <stop offset=".8" stop-color="#3786c7" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#2581c4"/>
+    </radialGradient>
+  </defs>
+  <rect width="1080" height="1080"/>
+  <g>
+    <path class="st2" d="M230.7,856.5l527.6-379.6-183.1-56.6,273.8-223-448.4,275.1,190.4,58.8-360.3,325.3Z"/>
+    <path class="st0" d="M230.7,856.5l527.5-379.6-183.1-56.6,273.8-223-448.3,275.1,190.3,58.8-360.1,325.3Z"/>
+    <path class="st1" d="M575.1,420.2l-24-7.3,298.2-215.7-274.2,223Z"/>
+    <path class="st1" d="M734.2,469.5l24,7.4L231.6,855.7l502.6-386.2Z"/>
+  </g>
+</svg>
