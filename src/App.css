@@ -379,4 +379,8 @@ body {
   .card {
     padding: 20px;
   }
+
+  .logo_small {
+    bottom: 30px;
+  }
 }

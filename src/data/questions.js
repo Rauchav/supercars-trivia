@@ -22,7 +22,8 @@ export const questions = [
   },
   {
     _id: "3",
-    question: "¿Puedo echarle un poquito de gasolina por si acaso?",
+    question:
+      "¿Puedo cargarle ami auto 100% eléctrico un poquito de gasolina por si acaso?",
     correct: "No, los autos 100% eléctricos no usan combustible.",
     incorrect1: "Claro, media tacita ayuda.",
     incorrect2: "Solo gasolina premium.",
@@ -95,7 +96,8 @@ export const questions = [
     correct: "Con aceleración rápida por par (torque) instantáneo.",
     incorrect1: "Más lento que uno a gasolina.",
     incorrect2: "No supera 80 km/h.",
-    feedback: "Entrega par desde 0 rpm; por eso arranca con agilidad.",
+    feedback:
+      "Entrega energía desde la partida (0 km) por eso arranca con toda su fuerza",
   },
   {
     _id: "11",
@@ -160,7 +162,7 @@ export const questions = [
     incorrect1: "Pierde potencia.",
     incorrect2: "Necesita mucho impulso previo.",
     feedback:
-      "El motor entrega par de inmediato: despega con agilidad y trepa cuestas con confianza.",
+      "El motor entrega energía de inmediato: despega con agilidad y trepa cuestas con confianza.",
   },
   {
     _id: "18",
