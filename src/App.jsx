@@ -53,8 +53,8 @@ function App() {
     setGameState("results");
   };
 
-  // Function to send quiz results to Google Sheets
-  const sendResultsToGoogleSheets = async (userData, userAnswers) => {
+  // Function to send participant data to Google Sheets (only after quiz completion)
+  const sendDataToGoogleSheets = async (userData, userAnswers) => {
     if (
       !CONFIG.ENABLE_GOOGLE_SHEETS ||
       !GOOGLE_SCRIPT_URL ||
@@ -65,13 +65,13 @@ function App() {
     }
 
     const score = userAnswers.filter((answer) => answer.isCorrect).length;
-    const totalQuestions = userAnswers.length;
 
-    const resultsData = {
-      ...userData,
+    const participantData = {
+      firstName: userData.firstName,
+      lastName: userData.lastName,
+      phone: userData.phone,
+      email: userData.email,
       score: score,
-      totalQuestions: totalQuestions,
-      answers: userAnswers,
     };
 
     try {
@@ -81,10 +81,10 @@ function App() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(resultsData),
+        body: JSON.stringify(participantData),
       });
     } catch (error) {
-      console.error("Error sending results to Google Sheets:", error);
+      console.error("Error sending data to Google Sheets:", error);
     }
   };
 
@@ -94,9 +94,9 @@ function App() {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setGameState("question");
     } else {
-      // Send results to Google Sheets when quiz is complete
+      // Send participant data to Google Sheets when quiz is complete
       if (userData && userAnswers.length > 0) {
-        sendResultsToGoogleSheets(userData, userAnswers);
+        sendDataToGoogleSheets(userData, userAnswers);
       }
       setGameState("closure");
     }

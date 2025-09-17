@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { GOOGLE_SCRIPT_URL, CONFIG } from "../config/googleSheets";
 
 const DataCaptureModal = ({ onSubmit, onClose }) => {
   const [formData, setFormData] = useState({
@@ -10,8 +9,6 @@ const DataCaptureModal = ({ onSubmit, onClose }) => {
   });
 
   const [errors, setErrors] = useState({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitError, setSubmitError] = useState("");
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -54,65 +51,11 @@ const DataCaptureModal = ({ onSubmit, onClose }) => {
     return Object.keys(newErrors).length === 0;
   };
 
-  // Function to send data to Google Sheets via Apps Script
-  const sendDataToGoogleSheets = async (data) => {
-    if (
-      !CONFIG.ENABLE_GOOGLE_SHEETS ||
-      !GOOGLE_SCRIPT_URL ||
-      GOOGLE_SCRIPT_URL === "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE"
-    ) {
-      console.warn("Google Sheets integration is disabled or not configured");
-      return { success: true }; // Allow the game to continue even if Google Sheets is not configured
-    }
-
-    try {
-      const response = await fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors", // Required for Google Apps Script
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
-
-      // Note: With no-cors mode, we can't read the response
-      // But if the request completes without throwing, it likely succeeded
-      return { success: true };
-    } catch (error) {
-      console.error("Error sending data to Google Sheets:", error);
-      return { success: false, error: error.message };
-    }
-  };
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!validateForm()) {
-      return;
-    }
-
-    setIsSubmitting(true);
-    setSubmitError("");
-
-    try {
-      // Send data to Google Sheets
-      const result = await sendDataToGoogleSheets(formData);
-
-      if (result.success) {
-        // Data sent successfully, proceed with the game
-        onSubmit(formData);
-      } else {
-        setSubmitError(
-          "Error al enviar los datos. Por favor, inténtalo de nuevo."
-        );
-      }
-    } catch (error) {
-      console.error("Submit error:", error);
-      setSubmitError(
-        "Error al enviar los datos. Por favor, inténtalo de nuevo."
-      );
-    } finally {
-      setIsSubmitting(false);
+    if (validateForm()) {
+      onSubmit(formData);
     }
   };
 
@@ -198,26 +141,12 @@ const DataCaptureModal = ({ onSubmit, onClose }) => {
             )}
           </div>
 
-          {submitError && (
-            <div
-              style={{
-                color: "#ff4444",
-                fontSize: "14px",
-                marginTop: "10px",
-                textAlign: "center",
-              }}
-            >
-              {submitError}
-            </div>
-          )}
-
           <button
             type="submit"
             className="btn"
             style={{ width: "100%", marginTop: "20px" }}
-            disabled={isSubmitting}
           >
-            {isSubmitting ? "Enviando..." : "Comenzar Trivia"}
+            Comenzar Trivia
           </button>
         </form>
       </div>
