@@ -73,7 +73,8 @@ body {
 
 .logo_small {
   position: absolute;
-  bottom: 100px;
+  top: 10px;
+  left: 10px;
 }
 
 /* Title styles */
@@ -385,11 +386,5 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-  }
-}
-
-@media (max-width: 420px) {
-  .logo_small {
-    bottom: 10px;
   }
 }

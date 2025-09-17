@@ -40,6 +40,7 @@ const QuestionPage = ({
   return (
     <>
       <div className="question-container">
+        <img className="logo_small" src={logo} />
         <div className="question-counter">
           Pregunta {questionNumber} de {totalQuestions}
         </div>
@@ -63,7 +64,6 @@ const QuestionPage = ({
           </div>
         </div>
       </div>
-      <img className="logo_small" src={logo} />
     </>
   );
 };
