@@ -12,8 +12,8 @@ const WelcomePage = ({ onStartGame }) => {
         libertad y el ahorro que necesitas.
       </p>
       <p className="subtitle">
-        Ganate en descuento especial del 10%, para comprar de tu nuevo vehículo
-        eléctrico
+        Participa y llévate un recuerdo de SUPERCARS, no olvides de agendar tu
+        TEST DRIVE
       </p>
 
       <button className="btn" onClick={onStartGame}>

@@ -33,13 +33,10 @@ const ClosurePage = ({ userAnswers, onRestart }) => {
         </p>
 
         <div className="promotional-bubble">
-          Ganaste un descuento especial del 10% para la compra de tu nuevo
-          vehículo eléctrico
+          Te ganaste un recuerdo de SPERCARS
         </div>
 
-        <p style={{ marginBottom: "20px", fontSize: "1.1rem" }}>
-          Reclama tu descuento con un ejecutivo de ventas autorizado
-        </p>
+        <p className="subtitle">No olvides de agendar tu TEST DRIVE</p>
 
         <h2 className="final-message">GRACIAS POR PARTICIPAR</h2>
 
