@@ -5,6 +5,7 @@ import DataCaptureModal from "./components/DataCaptureModal";
 import QuestionPage from "./components/QuestionPage";
 import ResultsPage from "./components/ResultsPage";
 import ClosurePage from "./components/ClosurePage";
+import { GOOGLE_SCRIPT_URL, CONFIG } from "./config/googleSheets";
 import "./App.css";
 
 function App() {
@@ -52,12 +53,51 @@ function App() {
     setGameState("results");
   };
 
+  // Function to send quiz results to Google Sheets
+  const sendResultsToGoogleSheets = async (userData, userAnswers) => {
+    if (
+      !CONFIG.ENABLE_GOOGLE_SHEETS ||
+      !GOOGLE_SCRIPT_URL ||
+      GOOGLE_SCRIPT_URL === "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE"
+    ) {
+      console.warn("Google Sheets integration is disabled or not configured");
+      return;
+    }
+
+    const score = userAnswers.filter((answer) => answer.isCorrect).length;
+    const totalQuestions = userAnswers.length;
+
+    const resultsData = {
+      ...userData,
+      score: score,
+      totalQuestions: totalQuestions,
+      answers: userAnswers,
+    };
+
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(resultsData),
+      });
+    } catch (error) {
+      console.error("Error sending results to Google Sheets:", error);
+    }
+  };
+
   // Handle next question or finish game
   const handleNext = () => {
     if (currentQuestionIndex < selectedQuestions.length - 1) {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setGameState("question");
     } else {
+      // Send results to Google Sheets when quiz is complete
+      if (userData && userAnswers.length > 0) {
+        sendResultsToGoogleSheets(userData, userAnswers);
+      }
       setGameState("closure");
     }
   };
