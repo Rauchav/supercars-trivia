@@ -11,10 +11,10 @@ const WelcomePage = ({ onStartGame }) => {
         Aprende sobre los automóviles eléctricos y cómo podrían darte la
         libertad y el ahorro que necesitas.
       </p>
-      <p className="subtitle">
-        Participa y llévate un recuerdo de SUPERCARS, no olvides de agendar tu
-        TEST DRIVE
-      </p>
+
+      <div className="promotional-bubble">
+        Participa y llévate un recuerdo de SUPERCARS
+      </div>
 
       <button className="btn" onClick={onStartGame}>
         Comenzar a jugar

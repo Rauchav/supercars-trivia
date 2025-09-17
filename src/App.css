@@ -390,6 +390,6 @@ body {
 
 @media (max-width: 420px) {
   .logo_small {
-    bottom: 30px;
+    bottom: 10px;
   }
 }
