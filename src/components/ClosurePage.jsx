@@ -32,13 +32,9 @@ const ClosurePage = ({ userAnswers, onRestart }) => {
           Ahora ya sabes mucho más sobre los automóviles eléctricos
         </p>
 
-        <div className="promotional-bubble">
-          Te ganaste un recuerdo de SPERCARS
-        </div>
+        <p className="subtitle_bold">¡Te ganaste un recuerdo de SUPERCARS!</p>
 
         <p className="subtitle">No olvides de agendar tu TEST DRIVE</p>
-
-        <h2 className="final-message">GRACIAS POR PARTICIPAR</h2>
 
         <button className="btn" onClick={onRestart}>
           VOLVER A JUGAR

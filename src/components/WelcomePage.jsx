@@ -12,9 +12,9 @@ const WelcomePage = ({ onStartGame }) => {
         libertad y el ahorro que necesitas.
       </p>
 
-      <div className="promotional-bubble">
+      <p className="subtitle_bold">
         Participa y llévate un recuerdo de SUPERCARS
-      </div>
+      </p>
 
       <button className="btn" onClick={onStartGame}>
         Comenzar a jugar

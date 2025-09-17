@@ -73,6 +73,7 @@ body {
 
 .logo_small {
   position: absolute;
+  width: 80px;
   top: 10px;
   left: 10px;
 }
@@ -93,6 +94,13 @@ body {
   margin-bottom: 30px;
   color: #ffffff;
   line-height: 1.6;
+}
+
+.subtitle_bold {
+  color: #28b4fa;
+  font-weight: bold;
+  font-size: 1.8rem;
+  margin-bottom: 30px;
 }
 
 /* Modal styles */
