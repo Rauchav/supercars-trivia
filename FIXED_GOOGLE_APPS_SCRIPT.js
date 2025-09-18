@@ -1,4 +1,4 @@
-// Updated Google Apps Script for Supercars Trivia with Region field
+// Fixed Google Apps Script for Supercars Trivia with Region field
 // Copy and paste this code into your Google Apps Script editor
 
 function doPost(e) {
@@ -9,17 +9,27 @@ function doPost(e) {
     // Parse the incoming data
     const data = JSON.parse(e.postData.contents);
 
-    // Prepare the row data with the new Region column
+    // Debug: Log the received data to see what's being sent
+    console.log("Received data:", data);
+    console.log("Region value:", data.region);
+    console.log("Region type:", typeof data.region);
+
+    // Prepare the row data with explicit string conversion for region
     const timestamp = new Date();
+    const regionValue = data.region ? String(data.region) : "";
+
     const rowData = [
       timestamp,
       data.firstName || "",
       data.lastName || "",
       data.phone || "",
       data.email || "",
-      String(data.region || ""),
+      regionValue,
       data.score || 0,
     ];
+
+    // Debug: Log the row data before appending
+    console.log("Row data to append:", rowData);
 
     // Append the data to the sheet
     sheet.appendRow(rowData);

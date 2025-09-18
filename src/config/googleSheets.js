@@ -1,7 +1,7 @@
 // Configuration for Google Sheets integration
 // Replace this URL with your actual Google Apps Script web app URL
 export const GOOGLE_SCRIPT_URL =
-  "https://script.google.com/macros/s/AKfycbxXyf9ifv8o4JFHcIwsohPAGJgugR6MMcEuu8Y_zaCiT3eJRpIGVu60dbsbONjvQCYb/exec";
+  "https://script.google.com/macros/s/AKfycbwSmYIjcfDmhz1n2f6asIld--qIhPOHIo90-lIuZdTlld_iaaXDCn5I5fGIFP7ukxc/exec";
 
 // You can also add other configuration options here
 export const CONFIG = {

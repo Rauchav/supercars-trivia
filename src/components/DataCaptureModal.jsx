@@ -60,6 +60,10 @@ const DataCaptureModal = ({ onSubmit, onClose }) => {
     e.preventDefault();
 
     if (validateForm()) {
+      // DEBUG: Log the form data being submitted
+      console.log("DEBUG: Form data being submitted:", formData);
+      console.log("DEBUG: Region value:", formData.region);
+      console.log("DEBUG: Region type:", typeof formData.region);
       onSubmit(formData);
     }
   };

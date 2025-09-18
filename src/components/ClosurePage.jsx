@@ -32,9 +32,9 @@ const ClosurePage = ({ userAnswers, onRestart }) => {
           Ahora ya sabes mucho más sobre los automóviles eléctricos
         </p>
 
-        <p className="subtitle_bold">¡Te ganaste un recuerdo de SUPERCARS!</p>
+        <p className="subtitle">¡Te ganaste un recuerdo de SUPERCARS!</p>
 
-        <p className="subtitle">No olvides de agendar tu TEST DRIVE</p>
+        <p className="subtitle_bold">No olvides de agendar tu TEST DRIVE</p>
 
         <button className="btn" onClick={onRestart}>
           VOLVER A JUGAR

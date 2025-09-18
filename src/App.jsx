@@ -75,15 +75,32 @@ function App() {
       score: score,
     };
 
+    // DEBUG: Log the data being sent
+    console.log("DEBUG: Sending data to Google Sheets:", participantData);
+    console.log("DEBUG: Region value:", participantData.region);
+    console.log("DEBUG: Region type:", typeof participantData.region);
+
     try {
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(participantData),
+      // Use URL parameters with GET method to avoid CORS issues
+      const params = new URLSearchParams();
+      Object.keys(participantData).forEach((key) => {
+        params.append(key, String(participantData[key]));
       });
+
+      const url = `${GOOGLE_SCRIPT_URL}?${params.toString()}`;
+
+      // Create a hidden iframe to send data silently
+      const iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = url;
+      document.body.appendChild(iframe);
+
+      // Remove the iframe after a short delay
+      setTimeout(() => {
+        document.body.removeChild(iframe);
+      }, 1000);
+
+      console.log("DEBUG: Data sent to Google Sheets (silent mode)");
     } catch (error) {
       console.error("Error sending data to Google Sheets:", error);
     }
