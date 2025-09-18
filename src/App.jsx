@@ -71,6 +71,7 @@ function App() {
       lastName: userData.lastName,
       phone: userData.phone,
       email: userData.email,
+      region: userData.region,
       score: score,
     };
 

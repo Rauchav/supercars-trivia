@@ -6,6 +6,7 @@ const DataCaptureModal = ({ onSubmit, onClose }) => {
     lastName: "",
     phone: "",
     email: "",
+    region: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -45,6 +46,10 @@ const DataCaptureModal = ({ onSubmit, onClose }) => {
       newErrors.email = "El email es requerido";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = "El email no es válido";
+    }
+
+    if (!formData.region.trim()) {
+      newErrors.region = "La región es requerida";
     }
 
     setErrors(newErrors);
@@ -137,6 +142,40 @@ const DataCaptureModal = ({ onSubmit, onClose }) => {
             {errors.email && (
               <span style={{ color: "#ff4444", fontSize: "14px" }}>
                 {errors.email}
+              </span>
+            )}
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="region">¿De qué parte del país vienes?</label>
+            <select
+              id="region"
+              name="region"
+              value={formData.region}
+              onChange={handleInputChange}
+              style={{
+                width: "100%",
+                padding: "12px",
+                border: "1px solid #ddd",
+                borderRadius: "8px",
+                fontSize: "16px",
+                backgroundColor: "#fff",
+              }}
+            >
+              <option value="">Selecciona tu región</option>
+              <option value="La Paz">La Paz</option>
+              <option value="Cochabamba">Cochabamba</option>
+              <option value="Santa Cruz">Santa Cruz</option>
+              <option value="Beni">Beni</option>
+              <option value="Pando">Pando</option>
+              <option value="Sucre">Sucre</option>
+              <option value="Potosi">Potosi</option>
+              <option value="Oruro">Oruro</option>
+              <option value="Tarija">Tarija</option>
+            </select>
+            {errors.region && (
+              <span style={{ color: "#ff4444", fontSize: "14px" }}>
+                {errors.region}
               </span>
             )}
           </div>
