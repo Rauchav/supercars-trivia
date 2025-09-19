@@ -10,6 +10,12 @@ const DataCaptureModal = ({ onSubmit, onClose }) => {
   });
 
   const [errors, setErrors] = useState({});
+  const [fieldVisibility, setFieldVisibility] = useState({
+    firstName: false,
+    lastName: false,
+    phone: false,
+    email: false,
+  });
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -56,6 +62,13 @@ const DataCaptureModal = ({ onSubmit, onClose }) => {
     return Object.keys(newErrors).length === 0;
   };
 
+  const toggleFieldVisibility = (fieldName) => {
+    setFieldVisibility((prev) => ({
+      ...prev,
+      [fieldName]: !prev[fieldName],
+    }));
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -82,16 +95,38 @@ const DataCaptureModal = ({ onSubmit, onClose }) => {
         </h2>
 
         <form onSubmit={handleSubmit}>
+          {/* Custom Input Component with Eye Icon */}
           <div className="form-group">
             <label htmlFor="firstName">Nombre:</label>
-            <input
-              type="text"
-              id="firstName"
-              name="firstName"
-              value={formData.firstName}
-              onChange={handleInputChange}
-              placeholder="Ingresa tu nombre"
-            />
+            <div style={{ position: "relative" }}>
+              <input
+                type={fieldVisibility.firstName ? "text" : "password"}
+                id="firstName"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleInputChange}
+                placeholder="Ingresa tu nombre"
+                style={{ paddingRight: "40px" }}
+              />
+              <button
+                type="button"
+                onClick={() => toggleFieldVisibility("firstName")}
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "18px",
+                  color: "#666",
+                  padding: "5px",
+                }}
+              >
+                {fieldVisibility.firstName ? "👁️" : "👁️‍🗨️"}
+              </button>
+            </div>
             {errors.firstName && (
               <span style={{ color: "#ff4444", fontSize: "14px" }}>
                 {errors.firstName}
@@ -101,14 +136,35 @@ const DataCaptureModal = ({ onSubmit, onClose }) => {
 
           <div className="form-group">
             <label htmlFor="lastName">Apellido:</label>
-            <input
-              type="text"
-              id="lastName"
-              name="lastName"
-              value={formData.lastName}
-              onChange={handleInputChange}
-              placeholder="Ingresa tu apellido"
-            />
+            <div style={{ position: "relative" }}>
+              <input
+                type={fieldVisibility.lastName ? "text" : "password"}
+                id="lastName"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleInputChange}
+                placeholder="Ingresa tu apellido"
+                style={{ paddingRight: "40px" }}
+              />
+              <button
+                type="button"
+                onClick={() => toggleFieldVisibility("lastName")}
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "18px",
+                  color: "#666",
+                  padding: "5px",
+                }}
+              >
+                {fieldVisibility.lastName ? "👁️" : "👁️‍🗨️"}
+              </button>
+            </div>
             {errors.lastName && (
               <span style={{ color: "#ff4444", fontSize: "14px" }}>
                 {errors.lastName}
@@ -118,14 +174,35 @@ const DataCaptureModal = ({ onSubmit, onClose }) => {
 
           <div className="form-group">
             <label htmlFor="phone">Teléfono:</label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              placeholder="Ingresa tu número de teléfono"
-            />
+            <div style={{ position: "relative" }}>
+              <input
+                type={fieldVisibility.phone ? "tel" : "password"}
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleInputChange}
+                placeholder="Ingresa tu número de teléfono"
+                style={{ paddingRight: "40px" }}
+              />
+              <button
+                type="button"
+                onClick={() => toggleFieldVisibility("phone")}
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "18px",
+                  color: "#666",
+                  padding: "5px",
+                }}
+              >
+                {fieldVisibility.phone ? "👁️" : "👁️‍🗨️"}
+              </button>
+            </div>
             {errors.phone && (
               <span style={{ color: "#ff4444", fontSize: "14px" }}>
                 {errors.phone}
@@ -135,14 +212,35 @@ const DataCaptureModal = ({ onSubmit, onClose }) => {
 
           <div className="form-group">
             <label htmlFor="email">Email:</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder="Ingresa tu email"
-            />
+            <div style={{ position: "relative" }}>
+              <input
+                type={fieldVisibility.email ? "email" : "password"}
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                placeholder="Ingresa tu email"
+                style={{ paddingRight: "40px" }}
+              />
+              <button
+                type="button"
+                onClick={() => toggleFieldVisibility("email")}
+                style={{
+                  position: "absolute",
+                  right: "10px",
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  fontSize: "18px",
+                  color: "#666",
+                  padding: "5px",
+                }}
+              >
+                {fieldVisibility.email ? "👁️" : "👁️‍🗨️"}
+              </button>
+            </div>
             {errors.email && (
               <span style={{ color: "#ff4444", fontSize: "14px" }}>
                 {errors.email}
